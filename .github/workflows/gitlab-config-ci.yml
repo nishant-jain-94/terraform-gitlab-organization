@@ -1,9 +1,11 @@
 name: Gitlab Provisioner Config
+
 on:
   push:
     branches:
       - dev
       - master
+
 jobs:
   test:
     name: Validate
