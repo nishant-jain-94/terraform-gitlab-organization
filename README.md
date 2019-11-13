@@ -22,9 +22,9 @@ terraform apply
 ```terraform
 {
   "john.doe@gmail.com" => {
-    username => john.doe
-    password => password@123
-    email => "john.doe@gmail.com"
+    username = "john.doe"
+    password = "password@123"
+    email = "john.doe@gmail.com"
   }
 }
 ```
