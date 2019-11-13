@@ -5,7 +5,7 @@ on:
       - dev
       - master
 jobs:
-  build:
+  test:
     name: Validate
     runs-on: ubuntu-latest
     steps:
