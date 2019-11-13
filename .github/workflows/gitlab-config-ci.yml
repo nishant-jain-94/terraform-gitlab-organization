@@ -1,6 +1,10 @@
 name: Gitlab Provisioner Config
 
-on: [push]
+on:
+  push:
+    branches:
+      - dev
+      - master
 
 jobs:
   build:
