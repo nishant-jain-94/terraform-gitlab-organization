@@ -1,47 +1,7 @@
-variable "base_url" {
-  type = string
-}
-
-variable "users" {
-  type = map
-}
-
-variable "groups" {
-  type = map
-}
-
-variable "gitlab_token" {
-  type = string
-}
-
-output "gitlab_users" {
-  value = var.users
-}
-
-output "gitlab_token" {
-  value = var.gitlab_token
-}
-
-output "gitlab_groups" {
-  value = var.groups
-}
-
-locals {
-  membershipAsArray = flatten([
-    for email, user in var.users :
-    [
-      for group in split(":", user.groups) :
-      {
-        email = user.email
-        group = group
-      }
-    ]
-  ])
-  memberships = { for membership in local.membershipAsArray : "${membership.email}_${membership.group}" => membership }
-}
-
-output "memberships" {
-  value = local.memberships
+terraform {
+  required_providers {
+    gitlab = "1.2.0"
+  }
 }
 
 provider "gitlab" {
@@ -50,8 +10,10 @@ provider "gitlab" {
   insecure = true
 }
 
-resource "gitlab_user" "user" {
-  for_each          = var.users
+# Creates a cohort of Gitlab Users onto this Gitlab Instance
+resource "gitlab_user" "this" {
+  for_each = var.users
+
   name              = each.value.username
   username          = each.value.username
   password          = each.value.password
@@ -63,16 +25,20 @@ resource "gitlab_user" "user" {
   skip_confirmation = true
 }
 
-resource "gitlab_group" "group" {
-  for_each    = var.groups
-  name        = "${each.value.group_name}"
-  path        = "${each.value.group_name}"
-  description = "${each.value.group_description}"
+# Creates a cohort of Gitlab Groups onto this Gitlab Instance
+resource "gitlab_group" "this" {
+  for_each = var.groups
+
+  name        = each.value.group_name
+  path        = each.value.group_name
+  description = each.value.group_description
 }
 
-resource "gitlab_group_membership" "group-membership" {
-  for_each     = local.memberships
-  group_id     = "${lookup(gitlab_group.group[format("%s", each.value.group)], "id", "0")}"
-  user_id      = "${lookup(gitlab_user.user[format("%s", each.value.email)], "id", "0")}"
+# Establishes membership of the Gitlab Users with Gitlab Groups
+resource "gitlab_group_membership" "this" {
+  for_each = local.memberships
+
+  group_id     = lookup(gitlab_group.this[format("%s", each.value.group)], "id", "0")
+  user_id      = lookup(gitlab_user.this[format("%s", each.value.email)], "id", "0")
   access_level = "guest"
 }
