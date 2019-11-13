@@ -14,13 +14,13 @@ provider "gitlab" {
 resource "gitlab_user" "this" {
   for_each = var.users
 
-  name              = each.value.username
+  name              = each.value.name ? each.value.name : each.value.username
   username          = each.value.username
-  password          = each.value.password
+  password          = each.value.password ? each.value.password : "password@123"
   email             = each.value.email
-  is_admin          = false
+  is_admin          = each.value.isAdmin ? each.value.isAdmin : false
   projects_limit    = 100
-  can_create_group  = true
+  can_create_group  = each.value.canCreateGroup ? each.value.canCreateGroup : true
   is_external       = false
   skip_confirmation = true
 }
