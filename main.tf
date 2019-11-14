@@ -39,14 +39,24 @@ resource "gitlab_project" "this" {
 
   name                                  = each.value.name
   path                                  = each.value.name
-  namespace_id                          = each.value.namespace_id
+  namespace_id                          = lookup(gitlab_group.this[format("%s", each.value.namespace_id)], "id")
   description                           = each.value.description
   only_allow_merge_if_pipeline_succeeds = true
   visibility_level                      = each.value.visibility_level
 
+  dynamic "shared_with_groups" {
+    for_each = each.value.shared_with_groups
+
+    content {
+      group_id           = lookup(gitlab_group.this[format("%s", shared_with_groups.key)], "id")
+      group_access_level = shared_with_groups.value
+    }
+  }
+
   depends_on = [
     gitlab_group.this,
-    gitlab_user.this
+    gitlab_user.this,
+    gitlab_group_membership.this
   ]
 }
 
@@ -54,9 +64,9 @@ resource "gitlab_project" "this" {
 resource "gitlab_group_membership" "this" {
   for_each = local.group_memberships
 
-  group_id     = lookup(gitlab_group.this[format("%s", each.value.group)], "id", "0")
-  user_id      = lookup(gitlab_user.this[format("%s", each.value.email)], "id", "0")
-  access_level = "guest"
+  group_id     = lookup(gitlab_group.this[format("%s", each.value.group_name)], "id", "0")
+  user_id      = lookup(gitlab_user.this[format("%s", each.value.user_email)], "id", "0")
+  access_level = each.value.access_level
 
   depends_on = [
     gitlab_user.this,
@@ -64,15 +74,10 @@ resource "gitlab_group_membership" "this" {
   ]
 }
 
-# resource "gitlab_project_share_group" "this" {
-#   for_each = local.project_memberships
+resource "gitlab_project_membership" "this" {
+  for_each = local.project_user_memberships
 
-#   project_id =
-#   group_id =
-#   access_level =
-
-#   depends_on = [
-#     gitlab_group.this
-#     gitlab_project.this
-#   ]
-# }
+  project_id   = lookup(gitlab_project.this[format("%s", each.value.project_name)], "id", "0")
+  user_id      = lookup(gitlab_user.this[format("%s", each.value.user_email)], "id", "0")
+  access_level = each.value.access_level
+}
