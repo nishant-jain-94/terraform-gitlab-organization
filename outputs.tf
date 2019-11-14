@@ -6,6 +6,10 @@ output "gitlab_groups" {
   value = var.groups
 }
 
-output "memberships" {
-  value = local.memberships
+output "group_memberships" {
+  value = local.group_memberships
+}
+
+output "project_memberships" {
+  value = local.project_memberships
 }

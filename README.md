@@ -1,4 +1,5 @@
-# tf-gitlab-provisioner-config
+
+# WIP: tf-gitlab-configuration
 
 Configuration of Provisioning Gitlab Instance using Terraform
 

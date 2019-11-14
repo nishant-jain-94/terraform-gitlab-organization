@@ -15,3 +15,8 @@ variable "groups" {
   description = "Refers to all the groups to be provisioned onto Gitlab"
   default     = {}
 }
+
+variable "projects" {
+  description = "Refers to all the projects to be provisioned onto Gitlab"
+  default     = {}
+}

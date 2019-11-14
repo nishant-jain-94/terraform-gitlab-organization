@@ -15,13 +15,11 @@ provider "gitlab" {
 resource "gitlab_user" "this" {
   for_each = var.users
 
-  name              = each.value.name ? each.value.name : each.value.username
+  name              = each.value.username
   username          = each.value.username
-  password          = each.value.password ? each.value.password : "password@123"
+  password          = each.value.password
   email             = each.value.email
-  is_admin          = each.value.isAdmin ? each.value.isAdmin : false
   projects_limit    = 100
-  can_create_group  = each.value.canCreateGroup ? each.value.canCreateGroup : true
   is_external       = false
   skip_confirmation = true
 }
@@ -35,11 +33,46 @@ resource "gitlab_group" "this" {
   description = each.value.group_description
 }
 
+# Creates a new project under a given namespace
+resource "gitlab_project" "this" {
+  for_each = var.projects
+
+  name                                  = each.value.name
+  path                                  = each.value.name
+  namespace_id                          = each.value.namespace_id
+  description                           = each.value.description
+  only_allow_merge_if_pipeline_succeeds = true
+  visibility_level                      = each.value.visibility_level
+
+  depends_on = [
+    gitlab_group.this,
+    gitlab_user.this
+  ]
+}
+
 # Establishes membership of the Gitlab Users with Gitlab Groups
 resource "gitlab_group_membership" "this" {
-  for_each = local.memberships
+  for_each = local.group_memberships
 
   group_id     = lookup(gitlab_group.this[format("%s", each.value.group)], "id", "0")
   user_id      = lookup(gitlab_user.this[format("%s", each.value.email)], "id", "0")
   access_level = "guest"
+
+  depends_on = [
+    gitlab_user.this,
+    gitlab_group.this
+  ]
 }
+
+# resource "gitlab_project_share_group" "this" {
+#   for_each = local.project_memberships
+
+#   project_id =
+#   group_id =
+#   access_level =
+
+#   depends_on = [
+#     gitlab_group.this
+#     gitlab_project.this
+#   ]
+# }
