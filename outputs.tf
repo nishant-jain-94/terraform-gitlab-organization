@@ -10,10 +10,6 @@ output "group_memberships" {
   value = local.group_memberships
 }
 
-output "user" {
-  value = lookup(gitlab_user.this["aditya.singh@northwind.in"], "id")
-}
-
 output "projects" {
   value = gitlab_project.this
 }

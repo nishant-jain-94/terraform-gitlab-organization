@@ -1,0 +1,22 @@
+{
+  "projects": {
+    "mentors-project": {
+      "name": "mentors-project",
+      "description": "This is only the Test Project",
+      "namespace_id": "northwind-mentors",
+      "visibility_level": "private",
+      "shared_with_groups": {
+        "northwind-auditors": "guest"
+      }
+    },
+    "users-project": {
+      "name": "users-project",
+      "description": "This is only the Test Project",
+      "namespace_id": "northwind-mentors",
+      "visibility_level": "private",
+      "shared_with_groups": {
+        "northwind-auditors": "guest"
+      }
+    }
+  }
+}
