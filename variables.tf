@@ -1,9 +1,9 @@
 variable "base_url" {
-  default = "https://gitlab.com"
+  type = "string"
 }
 
 variable "gitlab_token" {
-  type = string
+  type = "string"
 }
 
 variable "users" {
