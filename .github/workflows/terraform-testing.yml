@@ -24,4 +24,6 @@ jobs:
     steps:
       - uses: actions/checkout@master
       - uses: actions/setup-go@v1
+      - run: sudo apt-get install go-dep
+      - run: dep ensure
       - run: go test ./test/...
