@@ -21,8 +21,13 @@ jobs:
   test:
     name: test
     runs-on: ubuntu-latest
+    env:
+      GOPATH: ${{ runner.workspace }}
     steps:
-      - uses: actions/checkout@master
+      - name: Checkout Code
+        uses: actions/checkout@master
+        with:
+          path: ./src/github.com/${{ github.repository }}
       - uses: actions/setup-go@v1
       - run: sudo apt-get install go-dep
       - run: dep ensure
