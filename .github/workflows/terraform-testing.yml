@@ -22,7 +22,7 @@ jobs:
     name: test
     runs-on: ubuntu-latest
     env:
-      GOPATH: ${{ runner.workspace }}
+      GOPATH: ${{ runner.workspace }}/src/github.com/${{ github.repository }}
     steps:
       - name: Checkout Code
         uses: actions/checkout@master
