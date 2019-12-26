@@ -27,6 +27,8 @@ jobs:
           go-version: 1.13
       - name: Checkout Code
         uses: actions/checkout@master
-      - run: ls -alh
-      - run: go version
-      - run: go test ./test/...
+      - name: Test Terraform Configuration
+        run: go test ./test/...
+        env:
+          TF_VAR_base_url: ${{ secrets.TF_VAR_base_url }}
+          TF_VAR_gitlab_token: ${{ secrets.TF_VAR_gitlab_token }}
