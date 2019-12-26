@@ -27,6 +27,4 @@ jobs:
         uses: actions/checkout@master
         with:
           path: ./src/github.com/${{ github.repository }}
-      - run: ls -alh
-      - run: go get ./...
       - run: go test ./test/...
