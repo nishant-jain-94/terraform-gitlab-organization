@@ -24,11 +24,12 @@ jobs:
     env:
       GOPATH: ${{ github.workspace }}/src/github.com/${{ github.repository }}
     steps:
+      - uses: actions/setup-go@v1
       - name: Checkout Code
         uses: actions/checkout@master
         with:
           path: ./src/github.com/${{ github.repository }}
-      - uses: actions/setup-go@v1
+      - run: ls -alh
       - run: sudo apt-get --yes install go-dep
       - run: dep ensure
       - run: go test ./test/...
