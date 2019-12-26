@@ -31,5 +31,6 @@ jobs:
           path: ./src/github.com/${{ github.repository }}
       - run: ls -alh
       - run: sudo apt-get --yes install go-dep
+      - run: cd src/github.com/${{ github.repository }}
       - run: dep ensure
       - run: go test ./test/...
