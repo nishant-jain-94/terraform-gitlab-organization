@@ -1,10 +1,16 @@
 {
+  "group_namespaces": {
+    "northwind-mentors": "northwind-mentors",
+    "northwind-auditors": "northwind-auditors"
+  },
+  "user_namespaces": {},
   "projects": {
     "mentors-project": {
       "name": "mentors-project",
       "description": "This is only the Test Project",
       "namespace_id": "northwind-mentors",
       "visibility_level": "private",
+      "only_allow_merge_if_pipeline_succeeds": false,
       "shared_with_groups": {
         "northwind-auditors": "guest"
       }
@@ -14,6 +20,7 @@
       "description": "This is only the Test Project",
       "namespace_id": "northwind-mentors",
       "visibility_level": "private",
+      "only_allow_merge_if_pipeline_succeeds": true,
       "shared_with_groups": {
         "northwind-auditors": "guest"
       }

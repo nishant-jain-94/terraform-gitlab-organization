@@ -23,7 +23,7 @@ output "group_memberships" {
 }
 
 output "projects" {
-  value = module.add_users.projects
+  value = module.add_users.gitlab_projects
 }
 
 module "add_users" {

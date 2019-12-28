@@ -10,6 +10,6 @@ output "group_memberships" {
   value = local.group_memberships
 }
 
-output "projects" {
+output "gitlab_projects" {
   value = gitlab_project.this
 }

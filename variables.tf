@@ -20,3 +20,11 @@ variable "projects" {
   description = "Refers to all the projects to be provisioned onto Gitlab"
   default     = {}
 }
+
+variable "user_namespaces" {
+  default = {}
+}
+
+variable "group_namespaces" {
+  default = {}
+}

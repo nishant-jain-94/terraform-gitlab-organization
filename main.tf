@@ -33,13 +33,35 @@ resource "gitlab_group" "this" {
   description = each.value.group_description
 }
 
-# Creates a new project under a given namespace
+data "gitlab_group" "this" {
+  for_each = var.group_namespaces
+
+  full_path = each.value
+
+  depends_on = [
+    gitlab_group.this,
+    gitlab_user.this
+  ]
+}
+
+data "gitlab_user" "this" {
+  for_each = var.user_namespaces
+
+  email = each.value
+
+  depends_on = [
+    gitlab_group.this,
+    gitlab_user.this
+  ]
+}
+
+# Creates a new project under a given group namespace
 resource "gitlab_project" "this" {
   for_each = var.projects
 
   name                                  = each.value.name
   path                                  = each.value.name
-  namespace_id                          = lookup(gitlab_group.this[format("%s", each.value.namespace_id)], "id")
+  namespace_id                          = lookup(data.gitlab_group.this[format("%s", each.value.namespace_id)], "id")
   description                           = each.value.description
   only_allow_merge_if_pipeline_succeeds = true
   visibility_level                      = each.value.visibility_level
@@ -48,7 +70,7 @@ resource "gitlab_project" "this" {
     for_each = each.value.shared_with_groups
 
     content {
-      group_id           = lookup(gitlab_group.this[format("%s", shared_with_groups.key)], "id")
+      group_id           = lookup(data.gitlab_group.this[format("%s", shared_with_groups.key)], "id")
       group_access_level = shared_with_groups.value
     }
   }
