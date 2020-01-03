@@ -22,9 +22,11 @@ variable "projects" {
 }
 
 variable "user_namespaces" {
-  default = {}
+  description = "Refers to all the users which will be referenced in the groups and projects vars files. This helps populating data upfront for all the user resources which have been created in and out of the scope of this Terraform Script but needs to be referenced in Terraform Script."
+  default     = {}
 }
 
 variable "group_namespaces" {
-  default = {}
+  description = "Refers to all the groups which will be referenced in the groups, users and project vars files. This helps populating data upfront for all the group resouces which have been created in and out of the scope of this Terraform Script but needs to referenced in Terraform Script."
+  default     = {}
 }
