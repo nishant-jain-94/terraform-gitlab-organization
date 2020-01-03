@@ -1,4 +1,3 @@
-
 # WIP: tf-gitlab-configuration
 
 Configuration of Provisioning Gitlab Instance using Terraform
@@ -24,9 +23,9 @@ terraform apply
 ```terraform
 {
   users => {
-    "john.doe@gmail.com" => {
+    "john.doe@northwind.in" => {
       username = "john.doe"
-      email = "john.doe@gmail.com"
+      email = "john.doe@northwind.in"
       organization = "northwind"
       password = "password@123"
       groups_access = {

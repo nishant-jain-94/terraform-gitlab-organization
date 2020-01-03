@@ -24,9 +24,9 @@
         "users-project": "guest"
       }
     },
-    "sachin@gmail.com": {
+    "sachin@northwind.in": {
       "username": "sachin.grover",
-      "email": "sachin@gmail.com",
+      "email": "sachin@northwind.in",
       "organization": "northwind",
       "password": "password@123",
       "groups_access": {
@@ -36,9 +36,9 @@
         "users-project": "guest"
       }
     },
-    "sagar.patke@gmail.com": {
+    "sagar.patke@northwind.in": {
       "username": "sagar.patke",
-      "email": "sagar.patke@gmail.com",
+      "email": "sagar.patke@northwind.in",
       "organization": "northwind",
       "password": "password@123",
       "groups_access": {

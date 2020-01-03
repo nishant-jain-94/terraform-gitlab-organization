@@ -1,0 +1,34 @@
+name: Terraform Testing
+
+on:
+  push:
+    branches:
+      - dev
+      - master
+      - testing
+
+jobs:
+  validate:
+    name: Validate Terraform Configuration
+    runs-on: ubuntu-latest
+    steps:
+      - name: Terraform Validate
+        uses: hashicorp/terraform-github-actions@master
+        with:
+          tf_actions_version: 0.12.13
+          tf_actions_subcommand: validate
+          tf_actions_working_dir: .
+  test:
+    name: Test Terraform Configuration
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/setup-go@v1
+        with:
+          go-version: 1.13
+      - name: Checkout Code
+        uses: actions/checkout@master
+      - name: Test Terraform Configuration
+        run: go test ./test/...
+        env:
+          TF_VAR_base_url: ${{ secrets.TF_VAR_base_url }}
+          TF_VAR_gitlab_token: ${{ secrets.TF_VAR_gitlab_token }}
