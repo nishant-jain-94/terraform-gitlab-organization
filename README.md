@@ -1,10 +1,20 @@
 # terraform-gitlab-organization
 
-Configuration of Provisioning Gitlab Instance using Terraform
+A Terraform Module to Provision Gitlab Resources on Gitlab Instance
 
+## :rocket: Features
 
-### <details><summary>Add Users</summary>
-<p>
+- [Add Users](#add-users)
+- [Add Groups](#add-groups)
+- [Add Users to Groups](#add-users-to-groups)
+- [Add Projects to Groups](#add-projects-to-groups)
+
+## :information_desk_person: Usage
+
+### Add Users
+
+<details>
+<summary>Add Users Details</summary>
 
 ####  main.tf
 ```hcl
@@ -50,10 +60,12 @@ module "add_users" {
   }
 }
 ```
-</p>
 </details>
 
 ### Add Groups
+
+<details>
+<summary>Add Groups</summary>
 
 #### main.tf
 
@@ -97,8 +109,13 @@ module "add_groups" {
   }
 }
 ```
+</details>
 
 ### Add Users to Groups
+
+<details>
+<summary>Add Users to Groups</summary>
+
 #### main.tf
 ```hcl
 variable "gitlab_token" {
@@ -195,9 +212,12 @@ module "add_groups_users" {
   }
 }
 ```
+</details>
 
 ### Add Projects to Groups
 
+<details>
+<summary>Add Projects to Groups</summary>
 #### main.tf
 
 ```hcl
@@ -299,71 +319,11 @@ module "add_users_projects" {
 }
 ```
 
-## Instructions
-
-```
-terraform init
-terraform apply
-```
-
-## Inputs
-| Name | Description | Type | Default | Required |
-|------|-------------|------|---------|----------|
-| gitlab_url | Refers to the Url of the Gitlab Instance with the API Part | string | N/A | Yes |
-| gitlab_token | Refers to the personal token with Admin Privileges | string | N/A | Yes |
-| users | List of users to be added onto Gitlab | map | {} | Yes |
-| groups | List of groups to be created on Gitlab | map | {} | Yes |
-| projects | List pf projects to be created on Gitlab | map | {} | Yes |
-
-#### users
-
-```terraform
-{
-  users => {
-    "john.doe@northwind.in" => {
-      username = "john.doe"
-      email = "john.doe@northwind.in"
-      organization = "northwind"
-      password = "password@123"
-      groups_access = {
-        northwind-wave-1 = "guest"
-      },
-      projects_access = {
-        users-project = "guest
-      }
-    }
-  }
-}
-```
+</details>
 
 
-#### groups
 
-```terraform
-{
-  "groups" => {
-    "northwind-wave-1" => {
-      group_name = "reviewers"
-      group_description = "List of Reviewers"
-    }
-  }
-}
-```
 
-#### projects
+## Contribution Guidelines
 
-```terraform
-{
-  "projects" => {
-    mentors-projects = {
-      name = "mentors-project"
-      description = "This the Test Project"
-      namespace_id = "northwind-mentors"
-      visibility_level = "private"
-      shared_with_groups = {
-        northwind-auditors = "guest"
-      }
-    }
-  }
-}
-```
+Contributions to this Module are very much welcome. Checkout the [Contribution Guidelines](./CONTRIBUTING.md) for instructions.
