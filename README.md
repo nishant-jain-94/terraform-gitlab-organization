@@ -332,7 +332,7 @@ Changelog to this terraform module are logged here on [Changelog](./CHANGELOG.md
 
 ## :bug: Issues
 
-
+Incase of Issues or Feature requests log it here in the [issues](https://github.com/nishant-jain-94/terraform-gitlab-organization/issues) section.
 
 ## :page_facing_up: License
 This code is release under MIT License. Please see [LICENSE](./LICENSE) for more details.
