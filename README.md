@@ -322,17 +322,17 @@ module "add_users_projects" {
 </details>
 
 
-## Contribution Guidelines
+## :pencil: Contribution Guidelines
 
 Contributions to this Module are very much welcome. Checkout the [Contribution Guidelines](./CONTRIBUTING.md) for instructions.
 
-## Changelog
+## :bookmark: Changelog
 
 Changelog to this terraform module are logged here on [Changelog](./CHANGELOG.md).
 
-## Issues
+## :bug: Issues
 
 
 
-## License
+## :page_facing_up: License
 This code is release under MIT License. Please see [LICENSE](./LICENSE) for more details.
