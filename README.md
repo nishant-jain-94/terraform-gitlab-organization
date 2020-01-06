@@ -327,3 +327,7 @@ module "add_users_projects" {
 ## Contribution Guidelines
 
 Contributions to this Module are very much welcome. Checkout the [Contribution Guidelines](./CONTRIBUTING.md) for instructions.
+
+## Changelog
+
+Changelog to this terraform module are logged here on [Changelog](./CHANGELOG.md).
