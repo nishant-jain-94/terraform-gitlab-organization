@@ -1,4 +1,4 @@
-# terraform-gitlab-organization ![](https://github.com/nishant-jain-94/terraform-gitlab-organization/workflows/Terraform+Testing/badge.svg)
+# terraform-gitlab-organization ![](https://github.com/nishant-jain-94/terraform-gitlab-organization/workflows/terraform_testing/badge.svg)
 
 A Terraform Module to Provision Gitlab Resources on Gitlab Instance
 
