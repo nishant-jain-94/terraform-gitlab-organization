@@ -331,3 +331,7 @@ Contributions to this Module are very much welcome. Checkout the [Contribution G
 ## Changelog
 
 Changelog to this terraform module are logged here on [Changelog](./CHANGELOG.md).
+
+## License
+
+This code is release under MIT License. Please see [LICENSE](./LICENSE) for more details.
