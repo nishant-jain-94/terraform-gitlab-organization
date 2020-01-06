@@ -1,4 +1,4 @@
-name: terraform_testing
+name: Terraform Testing
 
 on:
   push:
