@@ -17,7 +17,7 @@ A Terraform Module to Provision Gitlab Resources on Gitlab Instance
 <summary>Add Users Details</summary>
 
 ####  main.tf
-```hcl
+```terraform
 variable "gitlab_token" {
   type = "string"
 }
@@ -69,7 +69,7 @@ module "add_users" {
 
 #### main.tf
 
-```hcl
+```terraform
 variable "gitlab_token" {
   type = "string"
 }
@@ -117,7 +117,7 @@ module "add_groups" {
 <summary>Add Users to Groups</summary>
 
 #### main.tf
-```hcl
+```terraform
 variable "gitlab_token" {
   type = "string"
 }
@@ -220,7 +220,7 @@ module "add_groups_users" {
 <summary>Add Projects to Groups</summary>
 #### main.tf
 
-```hcl
+```terraform
 variable "gitlab_token" {
   type = "string"
 }
@@ -322,8 +322,6 @@ module "add_users_projects" {
 </details>
 
 
-
-
 ## Contribution Guidelines
 
 Contributions to this Module are very much welcome. Checkout the [Contribution Guidelines](./CONTRIBUTING.md) for instructions.
@@ -332,6 +330,9 @@ Contributions to this Module are very much welcome. Checkout the [Contribution G
 
 Changelog to this terraform module are logged here on [Changelog](./CHANGELOG.md).
 
-## License
+## Issues
 
+
+
+## License
 This code is release under MIT License. Please see [LICENSE](./LICENSE) for more details.
