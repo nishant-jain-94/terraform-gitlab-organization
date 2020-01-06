@@ -218,6 +218,7 @@ module "add_groups_users" {
 
 <details>
 <summary>Add Projects to Groups</summary>
+
 #### main.tf
 
 ```terraform
