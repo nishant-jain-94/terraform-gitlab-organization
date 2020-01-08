@@ -207,8 +207,8 @@ module "add_groups_users" {
   "user_namespaces": {
     "aditya.singh": "aditya.singh@northwind.in",
     "raj.singh": "raj.singh@northwind.in",
-    "sachin.grover": "sachin@northwind.in",
-    "sagar.patke": "sagar.patke@northwind.in"
+    "harry.potter": "harry.potter@northwind.in",
+    "alice.wonderland": "alice.wonderland@northwind.in"
   }
 }
 ```
