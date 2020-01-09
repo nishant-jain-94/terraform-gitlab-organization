@@ -200,15 +200,29 @@ module "add_groups_users" {
 ```json
 {
   "group_namespaces": {
-    "northwind-wave-2": "northwind-wave-2",
-    "northwind-mentors-1": "northwind-mentors-1",
-    "northwind-auditors-1": "northwind-auditors-1"
+    "northwind-wave-2": {
+      "group_name": "northwind-wave-2"
+    },
+    "northwind-mentors-1": {
+      "group_name": "northwind-mentors-1"
+    },
+    "northwind-auditors-1": {
+      "group_name": "northwind-auditors-1"
+    }
   },
   "user_namespaces": {
-    "aditya.singh": "aditya.singh@northwind.in",
-    "raj.singh": "raj.singh@northwind.in",
-    "harry.potter": "harry.potter@northwind.in",
-    "alice.wonderland": "alice.wonderland@northwind.in"
+    "aditya.singh": {
+      "email": "aditya.singh@northwind.in"
+    },
+    "raj.singh": {
+      "email": "raj.singh@northwind.in"
+    },
+    "harry.potter": {
+      "email": "harry.potter@northwind.in"
+    },
+    "alice.wonderland": {
+      "email": "alice.wonderland@northwind.in"
+    }
   }
 }
 ```
@@ -286,9 +300,15 @@ module "add_users_projects" {
 ```json
 {
   "group_namespaces": {
-    "northwind-wave-2": "northwind-wave-2",
-    "northwind-mentors-1": "northwind-mentors-1",
-    "northwind-auditors-1": "northwind-auditors-1"
+    "northwind-wave-2": {
+      "group_name":"northwind-wave-2"
+    },
+    "northwind-mentors-1": {
+      "group_name": "northwind-mentors-1"
+    },
+    "northwind-auditors-1": {
+      "group_name": "northwind-auditors-1"
+    }
   },
   "user_namespaces": {}
 }
