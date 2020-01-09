@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## v1.0.0 - 2020-01-09
+
+#### :zap: Changed
+- :fire: **Not Compatible with previous version**. Changed the data structure of inputting group and user namespaces.
+
+
 ## v0.0.1 - 2020-01-06
 
 #### :rocket: Added
