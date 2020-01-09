@@ -36,7 +36,7 @@ resource "gitlab_group" "this" {
 data "gitlab_group" "this" {
   for_each = var.group_namespaces
 
-  full_path = each.value
+  full_path = each.value.group_name
 
   depends_on = [
     gitlab_group.this,
@@ -47,7 +47,7 @@ data "gitlab_group" "this" {
 data "gitlab_user" "this" {
   for_each = var.user_namespaces
 
-  email = each.value
+  email = each.value.email
 
   depends_on = [
     gitlab_group.this,

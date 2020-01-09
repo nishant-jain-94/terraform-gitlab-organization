@@ -1,7 +1,11 @@
 {
   "group_namespaces": {
-    "northwind-mentors": "northwind-mentors",
-    "northwind-auditors": "northwind-auditors"
+    "northwind-mentors": {
+      "group_name": "northwind-mentors"
+    },
+    "northwind-auditors": {
+      "group_name": "northwind-auditors"
+    }
   },
   "user_namespaces": {},
   "projects": {
